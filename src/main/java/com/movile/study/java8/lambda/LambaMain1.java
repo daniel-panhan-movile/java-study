@@ -47,6 +47,7 @@ import java.util.function.ToIntFunction;
 import java.util.function.ToLongBiFunction;
 import java.util.function.ToLongFunction;
 import java.util.function.UnaryOperator;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -71,7 +72,7 @@ public class LambaMain1 {
 		Supplier<Date> supplier2 = () -> new Date();                 // () -> T
 		Supplier<Date> supplier3 = Date::new;                        // () -> T
 		
-		System.out.println("[Supplier] " + supplier3.get());
+		System.out.println("[Supplier] " + Stream.generate(supplier3).limit(5).collect(Collectors.toList()));
 		System.out.println("---------------------------");
 		
 		// Consume a object and return void
