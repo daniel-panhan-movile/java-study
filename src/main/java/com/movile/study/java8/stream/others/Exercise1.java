@@ -1,4 +1,4 @@
-package com.movile.study.java8.stream.creation;
+package com.movile.study.java8.stream.others;
 
 import java.io.File;
 import java.util.Arrays;

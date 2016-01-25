@@ -1,4 +1,4 @@
-package com.movile.study.java8.stream.creation;
+package com.movile.study.java8.stream.others;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -21,7 +21,7 @@ public class FilterMapMain1 {
 
 		// Read file into string
 		String contents = new String(
-				Files.readAllBytes(Paths.get("src/main/resources/alice-in-wondeland.txt")),
+				Files.readAllBytes(Paths.get("src/main/resources/alice-in-wonderland.txt")),
 				StandardCharsets.UTF_8); 
 
 		List<String> words = Stream.of(contents.split("[\\P{L}]+"))  // Create stream of all words from the string

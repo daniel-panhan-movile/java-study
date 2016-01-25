@@ -1,4 +1,4 @@
-package com.movile.study.java8.stream.creation;
+package com.movile.study.java8.stream.others;
 
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -18,7 +18,7 @@ public class CreationMain5 {
 	public static void main(String[] args) throws Exception {
 		
 		String contents = new String(
-				Files.readAllBytes(Paths.get("src/main/resources/alice-in-wondeland.txt")),
+				Files.readAllBytes(Paths.get("src/main/resources/alice-in-wonderland.txt")),
 				StandardCharsets.UTF_8); // Read file into string
 		
 		long start = System.currentTimeMillis();

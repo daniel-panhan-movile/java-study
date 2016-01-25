@@ -1,4 +1,4 @@
-package com.movile.study.java8.stream.creation;
+package com.movile.study.java8.stream.others;
 
 import java.util.List;
 import java.util.stream.Collectors;

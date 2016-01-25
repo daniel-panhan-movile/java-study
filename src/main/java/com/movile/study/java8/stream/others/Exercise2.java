@@ -1,4 +1,4 @@
-package com.movile.study.java8.stream.creation;
+package com.movile.study.java8.stream.others;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,7 +23,7 @@ public class Exercise2 {
 		
 		
 		try (Stream<String> lines = Files
-				.lines(Paths.get("src/main/resources/alice-in-wondeland.txt"))
+				.lines(Paths.get("src/main/resources/alice-in-wonderland.txt"))
 				.onClose(() -> System.out.println("Closing stream..."))) {
 			System.out.println(lines.count());
 			System.out.println("Inside block");

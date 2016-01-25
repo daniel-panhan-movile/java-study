@@ -1,4 +1,4 @@
-package com.movile.study.java8.stream.creation;
+package com.movile.study.java8.stream.others;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -19,7 +19,7 @@ public class CreationMain4 {
 		long count = 0;
 		
 		// Java 7 try-with-resources - ensure that the stream will be closed
-		try (Stream<String> lines = Files.lines(Paths.get("src/main/resources/alice-in-wondeland.txt"))) {
+		try (Stream<String> lines = Files.lines(Paths.get("src/main/resources/alice-in-wonderland.txt"))) {
 			count = lines.count();
 		};
 		
