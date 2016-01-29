@@ -2,7 +2,9 @@ package com.movile.study.java8.stream.collecting;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -40,6 +42,30 @@ public class Collecting4 {
 
 		System.out.println("--------------");
 
+		// stream.collect(collector): values
+		// Collectors.toMap(key, value, mergeFunction)
+		Stream<Locale> locales = Stream.of(Locale.getAvailableLocales());
+		Map<String, String> languageNames = locales.collect(
+			Collectors.toMap(
+				l -> l.getDisplayLanguage(),
+				l -> l.getDisplayLanguage(l),
+				(existingValue, newValue) -> existingValue));
+		System.out.println(languageNames);
+		
+		System.out.println("--------------");
+		
+		// stream.collect(collector): values
+		// Collectors.toMap(key, value, mergeFunction, mapSupplier)
+		locales = Stream.of(Locale.getAvailableLocales());
+		TreeMap<String, String> languageNamesTreeMap = locales.collect(
+			Collectors.toMap(
+				l -> l.getDisplayLanguage(),
+				l -> l.getDisplayLanguage(l),
+				(existingValue, newValue) -> existingValue,
+				TreeMap::new));
+		System.out.println(languageNamesTreeMap);
+		
+		System.out.println("--------------");
 	}
 
 }

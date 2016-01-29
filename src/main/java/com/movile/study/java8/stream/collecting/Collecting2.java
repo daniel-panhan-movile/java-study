@@ -20,6 +20,13 @@ public class Collecting2 {
 		Stream<String> names = Stream.of(nameArray);
 		HashSet<String> hashSet = names.collect(HashSet::new, HashSet::add, HashSet::addAll);
 		System.out.println("hashSet: " + hashSet);
+		
+		System.out.println("--------------");
+		
+		// stream.collect(supplier, accumulator, combiner): values
+		names = Stream.of(nameArray);
+		StringBuilder stringBuilder = names.collect(StringBuilder::new, (sb, s) -> sb.append("-").append(s), StringBuilder::append);
+		System.out.println("stringBuilder: " + stringBuilder);
 
 		System.out.println("--------------");
 
