@@ -29,20 +29,20 @@ public class Collecting6 {
 
 		// stream.collect(collector): values
 		// Collectors.groupingBy(classifier, downstream)
-		// Collectors.counting()
-		Stream<Locale> locales = Stream.of(Locale.getAvailableLocales());
-		Map<String, Long> languageToLocalesCounting = locales.collect(
+		// Collectors.summingLong(mapper)
+	    Stream<City> cities = citiesList.stream();
+		Map<String, Long> citiesSummingByState = cities.collect(
 				Collectors.groupingBy(
-						Locale::getDisplayLanguage,
-						Collectors.counting()));
-		System.out.println(languageToLocalesCounting);
+						City::getState,
+						Collectors.summingLong(City::getPopulation)));
+		System.out.println(citiesSummingByState);
 
 		System.out.println("--------------");
 		
 		// stream.collect(collector): values
 		// Collectors.groupingBy(classifier, downstream)
 		// Collectors.maxBy(comparator)
-		Stream<City> cities = citiesList.stream();
+		cities = citiesList.stream();
 		Map<String, Optional<City>> citiesMaxByState = cities.collect(
 				Collectors.groupingBy(
 						City::getState,
@@ -55,7 +55,7 @@ public class Collecting6 {
 		// stream.collect(collector): values
 		// Collectors.groupingBy(classifier, downstream)
 		// Collectors.mapping(function, downstream)
-		locales = Stream.of(Locale.getAvailableLocales());
+		Stream<Locale> locales = Stream.of(Locale.getAvailableLocales());
 		Map<String, Set<String>> languageToLocalesMapping = locales.collect(
 				Collectors.groupingBy(
 						Locale::getDisplayLanguage,
@@ -76,6 +76,19 @@ public class Collecting6 {
 		citiesSummaryByState.forEach((st, sm) -> System.out.println(st + ": " + sm));
 
 		System.out.println("--------------");
+
+		// stream.collect(collector): values
+        // Collectors.groupingBy(classifier, downstream)
+        // Collectors.reduce(comparator)
+        cities = citiesList.stream();
+        Map<String, Long> citiesPopulationByState = cities.collect(
+                Collectors.groupingBy(
+                        City::getState,
+                        TreeMap::new,
+                        Collectors.reducing(0L, City::getPopulation, (p1, p2) -> p1 + p2)));
+        System.out.println(citiesPopulationByState);
+
+        System.out.println("--------------");
 	}
 	
 	static {
