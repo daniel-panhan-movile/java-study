@@ -44,14 +44,19 @@ public class ParallelCount {
 
 		System.out.println("N_CPUS: " + N_CPUS);
 		
-		long start = System.currentTimeMillis();
-		int primeSeq = countSequencial(max);
-		System.out.println("Total: " + primeSeq + " - " + (System.currentTimeMillis() - start) + "ms");
-
-		start = System.currentTimeMillis();
-		int primeParallel = countParallel(max);
-		System.out.println("Total: " + primeParallel + " - " + (System.currentTimeMillis() - start) + "ms");
 		
+		long start = System.currentTimeMillis();
+        int primeSeq = countSequencial(max);
+        System.out.println("Total: " + primeSeq + " - " + (System.currentTimeMillis() - start) + "ms");
+		
+        start = System.currentTimeMillis();
+        int primeFor = countFor(max);
+        System.out.println("Total: " + primeFor + " - " + (System.currentTimeMillis() - start) + "ms");
+        
+        start = System.currentTimeMillis();
+        int primeParallel = countParallel(max);
+        System.out.println("Total: " + primeParallel + " - " + (System.currentTimeMillis() - start) + "ms");
+        
 		start = System.currentTimeMillis();
 		int primeParallelWithForkJoinPool = countParallelWithForkJoinPool(max);
 		System.out.println("Total: " + primeParallelWithForkJoinPool + " - " + (System.currentTimeMillis() - start) + "ms");
@@ -68,6 +73,20 @@ public class ParallelCount {
 		POOL.shutdown();
 	}
 
+	static int countFor(int max) {
+	    int[] total = new int[1];
+	    total[0] = 0;
+	    
+	    for (int i = 0; i < max; i++) {
+	        sumPrime(total, i);
+	    }
+	    return total[0];
+	}
+
+    private static void sumPrime(int[] total, int i) {
+        total[0] += isPrime(i) ? 1 : 0;
+    }
+	
 	static int countSequencial(int max) {
 		return (int) IntStream.range(0, max).filter((number) -> isPrime(number)).count();
 	}
