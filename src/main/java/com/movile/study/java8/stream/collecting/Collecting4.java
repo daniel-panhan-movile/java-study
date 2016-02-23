@@ -28,16 +28,16 @@ public class Collecting4 {
 
 		// stream.collect(collector): values
 		// Collectors.toMap(key, value)
-		Stream<Person> persons = personList.stream();
-		Map<Long, String> map = persons.collect(Collectors.toMap(Person::getId, Person::getName));
+		Stream<Person> people = personList.stream();
+		Map<Long, String> map = people.collect(Collectors.toMap(Person::getId, Person::getName));
 		System.out.println("map: " + map);
 
 		System.out.println("--------------");
 		
 		// stream.collect(collector): values
 		// Collectors.toMap(key, value)
-		persons = personList.stream();
-		Map<Long, Person> mapPerson = persons.collect(Collectors.toMap(Person::getId, Function.identity()));
+		people = personList.stream();
+		Map<Long, Person> mapPerson = people.collect(Collectors.toMap(Person::getId, Function.identity()));
 		System.out.println("mapPerson: " + mapPerson);
 
 		System.out.println("--------------");

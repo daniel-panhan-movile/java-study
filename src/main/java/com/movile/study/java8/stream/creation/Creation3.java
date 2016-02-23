@@ -19,19 +19,21 @@ public class Creation3 {
 
 		System.out.println("--------------");
 
-		// Stream.iterate(seed, unaryOperator)
+		// collection.parallelStream
 		Stream<String> namesParallel = nameList.parallelStream();
 		namesParallel.forEach(System.out::println);
 
 		System.out.println("--------------");
 
-		// Stream.iterate(seed, unaryOperator)
+		// collection.parallelStream
+		// sequencial
 		namesParallel = nameList.parallelStream();
 		namesParallel.sequential().forEach(System.out::println);
 
 		System.out.println("--------------");
 
-		// Stream.iterate(seed, unaryOperator)
+		// collection.parallelStream
+		// unordered
 		namesParallel = nameList.parallelStream();
 		namesParallel.unordered().forEach(System.out::println);
 
