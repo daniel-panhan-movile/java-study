@@ -16,7 +16,7 @@ public class Task implements Callable<Result> {
 
     @Override
     public Result call() throws Exception {
-        System.out.printf("%s: Staring\n", this.name);
+        System.out.printf("%s: Starting\n", this.name);
 
         try {
             long duration = (long) (Math.random() * 10);
